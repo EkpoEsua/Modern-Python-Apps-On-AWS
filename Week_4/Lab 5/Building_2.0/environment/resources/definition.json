@@ -1,0 +1,16 @@
+{
+	"Comment": "Basic step function process to Validate IP and cellphone",
+	"StartAt": "Validate",
+	"States": {
+		"Validate": {
+			"Type": "Task",
+			"Resource": "arn:aws:lambda:us-west-2:997978499156:function:validate",
+			"Next": "CreatePreSignedUrl"
+		},
+		"CreatePreSignedUrl": {
+			"Type": "Task",
+			"Resource": "arn:aws:lambda:us-west-2:997978499156:function:create_pre_signed_url",
+			"End": true
+		}
+	}
+}
