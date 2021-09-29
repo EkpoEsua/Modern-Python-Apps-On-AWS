@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<!-- saved from url=(0087)https://labs.vocareum.com/web/176897/119423.0/ASNLIB/public/docs/lang/en-us/README.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width initial-scale=1">
+<title>lab-1-s3</title><link href="./css" rel="stylesheet" type="text/css"><style type="text/css">html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; --title-bar-height:20px; }
+.mac-os-11 { --title-bar-height:28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; bottom: 0px; top: 0px; left: 0px; right: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-diagram-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.8; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.md-inline-math .MathJax_SVG .noError { display: none !important; }
+.html-for-mac .inline-math-svg .MathJax_SVG { vertical-align: 0.2px; }
+.md-math-block .MathJax_SVG_Display { text-align: center; margin: 0px; position: relative; text-indent: 0px; max-width: none; max-height: none; min-height: 0px; min-width: 100%; width: auto; overflow-y: hidden; display: block !important; }
+.MathJax_SVG_Display, .md-inline-math .MathJax_SVG_Display { width: auto; margin: inherit; display: inline-block !important; }
+.MathJax_SVG .MJX-monospace { font-family: var(--monospace); }
+.MathJax_SVG .MJX-sans-serif { font-family: sans-serif; }
+.MathJax_SVG { display: inline; font-style: normal; font-weight: 400; line-height: normal; zoom: 90%; text-indent: 0px; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; overflow-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0px; min-height: 0px; border: 0px; padding: 0px; margin: 0px; }
+.MathJax_SVG * { transition: none 0s ease 0s; }
+.MathJax_SVG_Display svg { vertical-align: middle !important; margin-bottom: 0px !important; margin-top: 0px !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+mark .md-meta { color: rgb(0, 0, 0); opacity: 0.3 !important; }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-require-zoom-fix foreignobject { font-size: var(--mermaid-font-zoom); }
+
+
+.CodeMirror { height: auto; }
+.CodeMirror.cm-s-inner { background: inherit; }
+.CodeMirror-scroll { overflow: auto hidden; z-index: 3; }
+.CodeMirror-gutter-filler, .CodeMirror-scrollbar-filler { background-color: rgb(255, 255, 255); }
+.CodeMirror-gutters { border-right: 1px solid rgb(221, 221, 221); background: inherit; white-space: nowrap; }
+.CodeMirror-linenumber { padding: 0px 3px 0px 5px; text-align: right; color: rgb(153, 153, 153); }
+.cm-s-inner .cm-keyword { color: rgb(119, 0, 136); }
+.cm-s-inner .cm-atom, .cm-s-inner.cm-atom { color: rgb(34, 17, 153); }
+.cm-s-inner .cm-number { color: rgb(17, 102, 68); }
+.cm-s-inner .cm-def { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-variable { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-variable-2 { color: rgb(0, 85, 170); }
+.cm-s-inner .cm-variable-3 { color: rgb(0, 136, 85); }
+.cm-s-inner .cm-string { color: rgb(170, 17, 17); }
+.cm-s-inner .cm-property { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-operator { color: rgb(152, 26, 26); }
+.cm-s-inner .cm-comment, .cm-s-inner.cm-comment { color: rgb(170, 85, 0); }
+.cm-s-inner .cm-string-2 { color: rgb(255, 85, 0); }
+.cm-s-inner .cm-meta { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-qualifier { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-builtin { color: rgb(51, 0, 170); }
+.cm-s-inner .cm-bracket { color: rgb(153, 153, 119); }
+.cm-s-inner .cm-tag { color: rgb(17, 119, 0); }
+.cm-s-inner .cm-attribute { color: rgb(0, 0, 204); }
+.cm-s-inner .cm-header, .cm-s-inner.cm-header { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-quote, .cm-s-inner.cm-quote { color: rgb(0, 153, 0); }
+.cm-s-inner .cm-hr, .cm-s-inner.cm-hr { color: rgb(153, 153, 153); }
+.cm-s-inner .cm-link, .cm-s-inner.cm-link { color: rgb(0, 0, 204); }
+.cm-negative { color: rgb(221, 68, 68); }
+.cm-positive { color: rgb(34, 153, 34); }
+.cm-header, .cm-strong { font-weight: 700; }
+.cm-del { text-decoration: line-through; }
+.cm-em { font-style: italic; }
+.cm-link { text-decoration: underline; }
+.cm-error { color: red; }
+.cm-invalidchar { color: red; }
+.cm-constant { color: rgb(38, 139, 210); }
+.cm-defined { color: rgb(181, 137, 0); }
+div.CodeMirror span.CodeMirror-matchingbracket { color: rgb(0, 255, 0); }
+div.CodeMirror span.CodeMirror-nonmatchingbracket { color: rgb(255, 34, 34); }
+.cm-s-inner .CodeMirror-activeline-background { background: inherit; }
+.CodeMirror { position: relative; overflow: hidden; }
+.CodeMirror-scroll { height: 100%; outline: 0px; position: relative; box-sizing: content-box; background: inherit; }
+.CodeMirror-sizer { position: relative; }
+.CodeMirror-gutter-filler, .CodeMirror-hscrollbar, .CodeMirror-scrollbar-filler, .CodeMirror-vscrollbar { position: absolute; z-index: 6; display: none; }
+.CodeMirror-vscrollbar { right: 0px; top: 0px; overflow: hidden; }
+.CodeMirror-hscrollbar { bottom: 0px; left: 0px; overflow: hidden; }
+.CodeMirror-scrollbar-filler { right: 0px; bottom: 0px; }
+.CodeMirror-gutter-filler { left: 0px; bottom: 0px; }
+.CodeMirror-gutters { position: absolute; left: 0px; top: 0px; padding-bottom: 30px; z-index: 3; }
+.CodeMirror-gutter { white-space: normal; height: 100%; box-sizing: content-box; padding-bottom: 30px; margin-bottom: -32px; display: inline-block; }
+.CodeMirror-gutter-wrapper { position: absolute; z-index: 4; background: 0px 0px !important; border: none !important; }
+.CodeMirror-gutter-background { position: absolute; top: 0px; bottom: 0px; z-index: 4; }
+.CodeMirror-gutter-elt { position: absolute; cursor: default; z-index: 4; }
+.CodeMirror-lines { cursor: text; }
+.CodeMirror pre { border-radius: 0px; border-width: 0px; background: 0px 0px; font-family: inherit; font-size: inherit; margin: 0px; white-space: pre; overflow-wrap: normal; color: inherit; z-index: 2; position: relative; overflow: visible; }
+.CodeMirror-wrap pre { overflow-wrap: break-word; white-space: pre-wrap; word-break: normal; }
+.CodeMirror-code pre { border-right: 30px solid transparent; width: fit-content; }
+.CodeMirror-wrap .CodeMirror-code pre { border-right: none; width: auto; }
+.CodeMirror-linebackground { position: absolute; left: 0px; right: 0px; top: 0px; bottom: 0px; z-index: 0; }
+.CodeMirror-linewidget { position: relative; z-index: 2; overflow: auto; }
+.CodeMirror-wrap .CodeMirror-scroll { overflow-x: hidden; }
+.CodeMirror-measure { position: absolute; width: 100%; height: 0px; overflow: hidden; visibility: hidden; }
+.CodeMirror-measure pre { position: static; }
+.CodeMirror div.CodeMirror-cursor { position: absolute; visibility: hidden; border-right: none; width: 0px; }
+.CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+.CodeMirror-focused div.CodeMirror-cursor { visibility: inherit; }
+.cm-searching { background: rgba(255, 255, 0, 0.4); }
+@media print {
+  .CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+}
+
+
+:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+/* open-sans-regular - latin-ext_latin */
+  /* open-sans-italic - latin-ext_latin */
+    /* open-sans-700 - latin-ext_latin */
+    /* open-sans-700italic - latin-ext_latin */
+  html {
+    font-size: 16px;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1024px;
+	}
+}
+
+@media only screen and (min-width: 1800px) {
+	#write {
+		max-width: 1200px;
+	}
+}
+
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+
+/*@media print {
+    .typora-export h1,
+    .typora-export h2 {
+        border-bottom: none;
+        padding-bottom: initial;
+    }
+
+    .typora-export h1::after,
+    .typora-export h2::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-top: -96px;
+        border-top: 1px solid #eee;
+    }
+}*/
+
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border-top: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table th:first-child,
+table td:first-child {
+    margin-top: 0;
+}
+table th:last-child,
+table td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    table,
+    pre {
+        page-break-inside: avoid;
+    }
+    pre {
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+.html-for-mac .context-menu {
+    --item-hover-bg-color: #E6F0FE;
+}
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+
+</style>
+</head>
+<body class="typora-export os-windows">
+<div id="write" class=""><p><em><span>[version_1.0.4]</span></em><span> </span></p><p><span>©2019 Amazon Web Services, Inc. and its affiliates. All rights reserved. This work may not be reproduced or redistributed, in whole or in part, without prior written permission from Amazon Web Services, Inc. Commercial copying, lending, or selling is prohibited.</span></p><p><span>Errors or corrections? Contact us at </span><a href="https://support.aws.amazon.com/#/contacts/aws-training" target="_blank" class="url">https://support.aws.amazon.com/#/contacts/aws-training</a></p><h1><a name="lab-intro" class="md-header-anchor"></a><span>Lab Intro</span></h1><h4><a name="welcome-to-the-labs-section-of-building-modern-web-applications-on-aws" class="md-header-anchor"></a><span>Welcome to the labs section of </span><strong><span>Building Modern Web Applications on AWS</span></strong><span>.</span></h4><p><span>If you have not watched my Lab Overview and Lab 1 intro. I suggest you stop here and go and watch them first so you know what your lab gameplay is going to be.</span></p><p><span>However just to quickly recap (and If you want to play along with the lab story). I'd like you to imagine this scenario:</span></p><h2><a name="the-lab-scenario" class="md-header-anchor"></a><span>The Lab Scenario</span></h2><h3><a name="context" class="md-header-anchor"></a><span>Context</span></h3><p><span>I'm going to have you play the role of a </span><strong><span>full-stack web developer</span></strong><span>. Imagine that you've just picked up a nice little development gig at a local camera reseller where they sell lightly-used camera equipment.</span></p><p><span>The owner Mike, tells you that they have a great deal of foot traffic. However because they are only a small company with two sales people, they don't really have the resources to spend quality time with customers when it gets really busy.</span></p><p><span>He has decided to buy some in-store kiosks, and this is where you come in. </span></p><p><span>He wants you to write the application that is to be used on these kiosks. He doesn't care too much about the technology you use as long as it's on AWS and is leveraging a modern backend.</span></p><p><span>This is a high level overview of what Mike wants the kiosks (the app) to do.</span></p><h3><a name="mikes-kiosk-idea" class="md-header-anchor"></a><span>Mike's Kiosk Idea</span></h3><p><span>He wants customers to go to the kiosks that are strategically positioned throughout the store, and have them type in a key phrase. Like </span><strong><span>4K</span></strong><span> and/or </span><strong><span>underwater camera</span></strong><span>.</span></p><p><span>The app needs to provide a list of items (titles) that are related to the search.</span></p><p><span>He wants the search to be lighting fast, and also show the product id. This way if a user finds an item they like, they can simply tell one of the sales clerks and they can fetch it from the back.</span></p><p><span>In order to help customers decide if the searched item is "for them", he wants you to bring up one or more Amazon Reviews or average ratings for it.</span></p><p><span>He tells you that Sandra (his store manager) will provide you with a list of item ids and product ids that they have in stock. This was will be able to reference the respective Amazon reviews and ratings by product id via your code.</span></p><p><span>Mike doesn't want to spend time and money having you build and maintain a database just to keep a reviews database up to date. Instead, he asks you if there is any way to query the Amazon camera reviews in a text file (that Sandra can store and keep updated in Amazon S3) and just have the app query that.</span></p><p><span>You nod. Thinking about Amazon S3's cool </span><strong><span>select functionality</span></strong><span>, and you tell Mike, "Sure. That's absolutely do-able".</span></p><h3><a name="your-mental-checklist--game-plan" class="md-header-anchor"></a><span>Your mental checklist / game plan</span></h3><p><span>You look down at your notes, and then suggest the following game plan.</span></p><p><span>You offer to draft out a simple webpage that has a key phrase search feature which locally references a full list of products in stock.</span></p><p><span>Then you tell Mike, that you will then start creating an AWS backend API. That way, when a user clicks on the "get reviews" or "get ratings" buttons on a searched item,  the app can make an API call that will query inside a file residing on S3. That file will simply be a stripped down version of the open source Amazon Reviews and Ratings dataset.</span></p><p><span>Mike seems happy with this, but asks for one more thing....if possible.</span></p><h3><a name="mikes-second-ask" class="md-header-anchor"></a><span>Mike's second ask:</span></h3><p><span>He asks if you can allow his staff to </span><strong><span>login</span></strong><span> to any of the kiosks and </span><strong><span>request a report</span></strong><span> be </span><strong><span>sent to their cellphones</span></strong><span>. The report would need to have </span><strong><span>all the items</span></strong><span>, with their reviews and ratings, along with the </span><strong><span>sentiment</span></strong><span> and any </span><strong><span>key phrases</span></strong><span> (tags) to indicate what the focus or </span><em><span>intent</span></em><span> was behind each review.</span></p><p><span>He clarifies by giving you an example. </span></p><p><span>If his staff can quickly identify items in the report that have a generally negative review and then further identify items that have reviews that seem to focus on pricing. </span></p><p><span>By identifying these items, his staff can then think about reducing the price on just those products. As pricing may have been the </span><em><span>primary</span></em><span> reason why he has not been selling many of them.</span></p><p><span>You nod. You understand the benefit of that, and suggest that you can do the following:</span></p><h3><a name="final-appended-game-plan" class="md-header-anchor"></a><span>Final (appended) game plan:</span></h3><p><span>Although this makes things a little more complicated. You tell him, "sure that can be done".</span></p><p><span>You make the following assumptions, that he seems fine with.</span></p><p><span>You tell him you will use a Amazon Cognito hosted UI for the login system, as he told you he only has a small budget for this project. Besides, you don't want to build an authentication system from scratch if you can avoid it.</span></p><p><span>You tell him, that you can use a background process that leverages machine learning to evaluate the sentiment of reviews and discover key phrases using Amazon Comprehension Entity and Sentiment analysis. Then you tell him that you will use all of that to generate a full HTML report. </span></p><p><span>You warn him that there will be a slight delay from them requesting a report at the kiosk until it arrives on their cellphone. This is because the machine learning part may take some time, and sending out of the text with a link to the report is not instant either. Luckily, he seems fine with all of that. </span></p><p><span>You presume that his staff will want to still view reports when they are out of the office (at the coffee shop over the road) from their cellphones. However they still need to have some kind of security on this report. You suggest that you can have the report HTML page expire after a short while to prevent long term access to it. Again, he is good with that idea.</span></p><p><span>He tells you that he has a static IPv4 address at the store. So you plan on just allowing access to the app from that IP address. You will use an S3 pre-signed URL for access to a separate report HTML page, which will be designed to be viewed on a mobile phone.</span></p><h3><a name="your-overall-game-plan-bullet-points" class="md-header-anchor"></a><span>Your overall game plan (bullet points)</span></h3><ul><li><span>Create a web front-end leveraging a list of in stock items that they have produced for you as JSON, and use a client side search feature.</span></li><li><span>Have the kiosk call an API to get a product's Amazon rating or review by id.</span></li><li><span>Allow staff to login (using Cognito) at the kiosk, so they can further request a report.</span></li><li><span>You will have a background process (AWS Step Functions) do all the various steps, and build out an HTML page that will get uploaded it to a private area on Amazon S3.</span></li><li><span>Have your background process create a pre-signed URL for that report in S3 and send that URL (via Amazon SNS) to their cell phone that is gathered from Amazon Cognito. </span></li></ul><hr><blockquote><p><span>BTW: If you see this symbol </span>💁‍♂<span> It is me (Rick) talking to you and offering my </span><em><span>2 cents</span></em><span> here and there. If you ever see the </span>📓<span> icon it's usually me highlighting something more interesting or notable.</span></p></blockquote><p>💁‍♂<span> </span><em><span>FYI. I have structured all of this into the following 6 labs / exercises</span></em></p><ol start=""><li><span>LAB 1 - Get the front end up, by uploading a simple front-end where a user can search for an item.</span></li><li><span>LAB 2 - Get the plumbing in place, by creating three placeholder API Mocks. You will have the website hit up 3 distinct API endpoints that just pipe back the same dummy data for reviews and ratings and create report regardless of what product ids your front-end sends.</span></li><li><span>LAB 3 - Set up the authentication for staff using Cognito user pools. Wire that into the create report API endpoint and have it reject non authorized requests. </span></li><li><span>LAB 4 - Replace the mock AWS Lambda Functions with functions that use S3 </span><em><span>SelectObject</span></em><span> to return real data to the 2 GET endpoints: </span><code>get_reviews</code><span> and </span><code>get_ratings</code><span>.</span></li><li><span>Lab 5 - Have the </span><code>create_report</code><span> API kick off a step function background process. Have the step function call various Lambda functions that do various things. Such as sentiment analysis on a review.  Look for key phrases to help with tagging in the report, and create the HTML report and pre-sign it. Finally sending that URL to the logged in user's cellphone.</span></li><li><span>Lab 6 - Add metrics to instrument how it is performing (AWS X-Ray). Find ways to improve one of your Lambda functions with context reuse, and cache the response. </span></li></ol><hr><p>💁‍♂<span> </span><em><span>Ok, best of luck with all these labs. If you get stuck, head over the forums</span></em><span>.</span></p><h1><a name="exercise-1-working-with-s3" class="md-header-anchor"></a><span>Exercise 1: Working with S3</span></h1><h2><a name="the-story-so-far" class="md-header-anchor"></a><span>The Story So Far</span></h2><p><span>Ok, so its time to start your project.</span></p><p><span>You set about creating a basic webpage that allows a customer to search for camera equipment via a key-phrase.</span></p><p>💁‍♂<span> </span><em><span>The website is built by the way. You wont be building one. Just uploading it.</span></em></p><p><span>You have been provided with a JS file from Sandra which contains all the products that they have in stock. </span></p><p><span>She has matched the product titles with those found on Amazon.com. To keep things simple she is using the same Amazon.com product ids for their own inventory. She figured having the same product ID as found on Amazon.com would help you reference the respective reviews later in your project. You are starting to like this person already ;).</span></p><p><span>After a few painful days of pixel-shifting your website front-end. You have something to upload. </span></p><p><span>Normally you would have created a static website HTTP website on S3 to avoid having the user type in the </span><code>/index.html</code><span> stuff. As this is a Kiosk application where the user is not typing in a URL, you figure it's easier to skip that step. Besides (as you will find out later) when you come to use Cognito for authentication. The return URL that it uses has to be HTTPS. Using the virtual style S3 secure URL vs an S3 hosted website seems like the path of least resistance. </span>💁‍♂<span> </span><em><span>Excuse the pun.</span></em></p><p><span>You need to lock access down to just the kiosks in the store. you figure the easiest wa to do this is to write a </span><em><span>bucket policy</span></em><span> with an </span><em><span>IAM-like rule</span></em><span> to </span><em><span>condition-out</span></em><span> all other IPs from even viewing the site. As a bonus, the sales staff (provided they are in store and on the WIFI) can access it even if customers are using all the available kiosks.</span></p><p><span>If you can get the website installed and working in the kiosks by the end of today, you are confident that Mike will be happy that things are moving along nicely, and all will be good in the world.</span></p><hr><ul><li><span>You are going to create a bucket in Oregon using </span><code>CMD_LINE</code><span> then configure it for website hosting.</span></li><li><span>Using the </span><code>SDK</code><span> you will adjust the bucket policy (permissions) and lock it down to be accessed exclusively from the office IPv4 address (i.e your IPv4).</span></li></ul><p>💁‍♂<span> </span><em><span>My lab 1's are always nice and easy, to lull you into a false sense of security ;)</span></em></p><h2><a name="what-you-will-learn-in-this-lab" class="md-header-anchor"></a><span>What you will learn in this lab:</span></h2><ol start=""><li><span>How to create a new S3 bucket using the command line (terminal) on Cloud9. Or the </span><code>CMD_LINE</code><span>.</span></li><li><span>How to upload specific access permissions for the hosted website, and how to use an IP condition rule to only allow access to a specific IPv4 address.</span></li><li><span>How to upload a local website to an S3 bucket, using a script leveraging the AWS SDK (called from Cloud9).  All while setting metadata on those objects.</span></li><li><span>[</span><em><span>Optional</span></em><span>] You will learn what the JS code in the website is doing if you </span><del><span>care</span></del><span> are interested. This will give you a heads up for how the APIs are being liaised with for the later labs.</span></li></ol><h2><a name="accessing-the-aws-management-console" class="md-header-anchor"></a><span>Accessing the AWS Management Console</span></h2><ol start=""><li><p><span>At the top of these instructions, click </span><strong><span>Start Lab</span></strong><span> to launch your lab.</span></p></li><li><p><span>A Start Lab panel opens displaying the lab status.</span></p></li><li><p><span>Wait until you see the message "</span><strong><span>Lab status: ready</span></strong><span>", then click the </span><strong><span>X</span></strong><span> to close the Start Lab panel.</span></p></li><li><p><span>At the top of these instructions, click </span><strong><span>AWS</span></strong></p><p><span>This will open the AWS Management Console in a new browser tab. The system will automatically log you in.    </span></p></li></ol><blockquote><p><strong><span>TIP:</span></strong><span> If a new browser tab does not open, there will typically be a banner or icon at the top of your browser indicating that your browser is preventing the site from opening pop-up windows. Click on the banner or icon and choose "Allow pop ups."</span></p></blockquote><p><span>Arrange the AWS Management Console tab so that it displays along side these instructions. Ideally, you will be able to see both browser tabs at the same time, to make it easier to follow the lab steps.</span></p><h2><a name="setup" class="md-header-anchor"></a><span>Setup</span></h2><ol start=""><li><p><span>Ensure you are in </span><strong><span>Cloud9</span></strong><span>. Choose </span><strong><span>Services</span></strong><span> and search for </span><strong><span>Cloud9</span></strong><span>. You should see an existing IDE called Building_2.0. Click the button </span><strong><span>Open IDE</span></strong><span>. Once the IDE has loaded, enter the following command into the terminal:  </span><em><span>(This command will ensure that you are in the correct path)</span></em></p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="bash"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">cd</span> /home/ec2-user/environment</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 23px;"></div><div class="CodeMirror-gutters" style="display: none; height: 23px;"></div></div></div></pre></li><li><p><span>You will need get the files that will be used for this exercise. Go to the Cloud9 </span><strong><span>bash terminal</span></strong><span> (at the bottom of the page) and run the following </span><code>wget</code><span> command:</span></p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="bash"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">wget</span> https://aws-tc-largeobjects.s3-us-west-2.amazonaws.com/DEV-AWS-MO-Building_2.0/lab-1-s3.zip</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 46px;"></div><div class="CodeMirror-gutters" style="display: none; height: 46px;"></div></div></div></pre></li><li><p><span>You should also see that a root folder called </span><strong><span>Building_2.0</span></strong><span> with a </span><code>lab-1-s3.zip</code><span> file has been downloaded and added to your AWS Cloud9 filesystem (on the top left). </span></p></li><li><p><span>To unzip the file.  Run the following command:</span></p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="bash"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">unzip lab-1-s3.zip</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 23px;"></div><div class="CodeMirror-gutters" style="display: none; height: 23px;"></div></div></div></pre></li><li><p><span>To keep things clean. Run the following commands to remove the zip file. </span><em><span>You can also close the other AWS console tab</span></em><span>.</span></p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="bash"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">rm</span> lab-1-s3.zip</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 23px;"></div><div class="CodeMirror-gutters" style="display: none; height: 23px;"></div></div></div></pre><p>⚠️<span> </span><strong><span>If you are using Java</span></strong><span> you will also need to run the following script:</span></p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="bash"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">chmod</span> <span class="cm-operator">+</span>x ./resources/java_setup.sh &amp;&amp; . ./resources/java_setup.sh</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 23px;"></div><div class="CodeMirror-gutters" style="display: none; height: 23px;"></div></div></div></pre></li></ol><h2><a name="lab-steps" class="md-header-anchor"></a><span>Lab Steps</span></h2><h3><a name="stage-1---creating-an-s3-bucket-using-the-cmdline" class="md-header-anchor"></a><span>Stage 1 - Creating An S3 Bucket Using The </span><code>CMD_LINE</code></h3><p><span>You need to a create an S3 bucket to host your website.</span></p><p><span>You know how to create buckets via the AWS Console, but you've always wanted to try and do this from the Cloud9 terminal's </span><code>CMD_LINE</code><span>. Now's your chance.</span></p><p><span>The command (method) for creating new S3 buckets is </span><del><span>surprise surprise</span></del><span> </span><code>create-bucket</code><span>. You will pass in the desired bucket name and the region where it is to be created.</span></p><p><span>You will need to come up with a unique bucket name.</span></p><p>💁‍♂<span> </span><em><span>To keep things consistent. I recommend you stick to this following format for your bucket name.</span></em><span> </span></p><p><em><span>Your initials in lowercase, then today's date YYYY-MM-DD and then the word s3site</span></em><span>.</span></p><p><span>For example: I would use this </span><code>rh-2020-02-25-s3site</code><span>.</span></p><p><span>Once you have decided on your bucket name. You will use the </span><code>CMD_LINE</code><span> to create a bucket in </span><code>us-west-2</code><span> or </span><code>Oregon</code><span>.  </span></p><ol start=""><li><p><span>Run this command via the</span><code>CMD_LINE</code><span> replacing the </span><code>&lt;FMI&gt;</code><span> with your bucket name.</span></p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="bash"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">aws s3api create-bucket <span class="cm-attribute">--bucket</span> &lt;FMI&gt; <span class="cm-attribute">--region</span> us-west-2 <span class="cm-attribute">--create-bucket-configuration</span> <span class="cm-def">LocationConstraint</span><span class="cm-operator">=</span>us-west-2</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 46px;"></div><div class="CodeMirror-gutters" style="display: none; height: 46px;"></div></div></div></pre><p><span>Here is an example (yours will be different).</span></p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="bash"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">aws s3api create-bucket <span class="cm-attribute">--bucket</span> rh-2020-02-25-s3site <span class="cm-attribute">--region</span> us-west-2 <span class="cm-attribute">--create-bucket-configuration</span> <span class="cm-def">LocationConstraint</span><span class="cm-operator">=</span>us-west-2</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 46px;"></div><div class="CodeMirror-gutters" style="display: none; height: 46px;"></div></div></div></pre><p><span>This would give you something like this: (</span><em><span>You will need to make a note of the bucket name for later </span><code>&lt;FMI&gt;</code><span>s.</span></em><span>)</span></p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="bash"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">{</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-string">"Location"</span>: <span class="cm-string">"https://rh-2020-02-25-s3site.s3.amazonaws.com/"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">}</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 69px;"></div><div class="CodeMirror-gutters" style="display: none; height: 69px;"></div></div></div></pre><p>💁‍♂<span> </span><em><span>Lose the </span><code>https://</code><span>bit and the </span><code>/</code><span> stuff before you use it in your code's </span><code>&lt;FMI&gt;</code><span> later.  Basically the bucket name in this instance would be </span><code>rh-2020-02-25-s3site</code><span>. &lt;&lt; Make a note of yours.</span></em></p></li></ol><hr><p><strong><span>First some basic lab information</span></strong></p><p>💁‍♂<span> As you go though these labs you will have the option to choose either </span><code>python</code><span>, </span><code>node</code><span> or </span><code>java</code><span>. Whenever you come to a section in a lab which starts with this symbol 🔬 you will have to choose your </span><del><span>least hated</span></del><span> most loved language, and navigate into that folder via the Cloud9 </span><code>CMD_LINE</code><span> using the stated </span><code>&lt;FMI&gt;</code><span> </span><em><span>(fill me ins).</span></em><span> </span></p><h3><a name="stage-2---setting-a-bucket-policy-on-your-bucket" class="md-header-anchor"></a><span>Stage 2 - Setting A Bucket Policy On Your Bucket</span></h3><p><span>Now you have a bucket created and live. You need to set the permissions on it. Currently everything is blocked to the outside world, as this is the default status of objects in S3 buckets. </span></p><p><span>Note that we are also locking down a </span><code>report.html</code><span> page for access via a pre-signed URL for later on in the course </span>💁‍♂<span>...more about that later.</span></p><p><span>You need to allow access to kiosks and cellphones that are on the WIFI network. You do this by adding a </span><strong><span>bucket policy</span></strong><span> to your bucket where you can enforce a </span><strong><span>condition</span></strong><span>.</span></p><ol start=""><li><p><span>Head to the </span><strong><span>AWS Cloud9</span></strong><span> tab. Ensure </span><code>Building_2.0</code><span> is the highlighted folder by clicking on it. Then right click and choose </span><strong><span>New File</span></strong><span> and call it </span><code>website_security_policy.json</code><span>. </span></p><p><span>Paste in the following code, replacing the three (2) </span><code>&lt;FMI&gt;</code><span> entries. You can find your IP address by visiting: </span><a href="https://www.whatismyip.com/" target="_blank" class="url">https://www.whatismyip.com/</a><span>. </span></p><p><span>Use that to replace </span><code>&lt;FMI_2&gt;</code><span> with your IPv4 address. Then use the same bucket name that you made a note of before for </span><code>&lt;FMI_1&gt;</code><span>. Then choose </span><strong><span>Save</span></strong><span>. </span></p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="json" style="break-inside: unset;"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="json"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">{</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-string cm-property">"Version"</span>: <span class="cm-string">"2008-10-17"</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-string cm-property">"Statement"</span>: [</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;  {</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-string cm-property">"Effect"</span>: <span class="cm-string">"Allow"</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-string cm-property">"Principal"</span>: <span class="cm-string">"*"</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-string cm-property">"Action"</span>: <span class="cm-string">"s3:GetObject"</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-string cm-property">"Resource"</span>: [</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-string">"arn:aws:s3:::&lt;FMI_1&gt;/*"</span>,</span></pre><div class="" style="position: relative;"><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-string">"arn:aws:s3:::&lt;FMI_1&gt;"</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  ],</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-string cm-property">"Condition"</span>: {</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-string cm-property">"IpAddress"</span>: {</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-string cm-property">"aws:SourceIp"</span>: [</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-string">"&lt;FMI_2&gt;/32"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  ]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  }</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  }</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;  },</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;  {</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-string cm-property">"Sid"</span>: <span class="cm-string">"DenyOneObjectIfRequestNotSigned"</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-string cm-property">"Effect"</span>: <span class="cm-string">"Deny"</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-string cm-property">"Principal"</span>: <span class="cm-string">"*"</span>,</span></pre><div class="" style="position: relative;"><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-string cm-property">"Action"</span>: <span class="cm-string">"s3:GetObject"</span>,</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-string cm-property">"Resource"</span>: <span class="cm-string">"arn:aws:s3:::&lt;FMI_1&gt;/report.html"</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-string cm-property">"Condition"</span>: {</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-string cm-property">"StringNotEquals"</span>: {</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-string cm-property">"s3:authtype"</span>: <span class="cm-string">"REST-QUERY-STRING"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  }</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  }</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;  }</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  ]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">}</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 759px;"></div><div class="CodeMirror-gutters" style="display: none; height: 759px;"></div></div></div></pre><p><em><span>As an example</span></em><span>: once you have replaced the </span><code>&lt;FMI&gt;</code><span>s it will look a bit like this:</span></p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="json" style="break-inside: unset;"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="json"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">{</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-string cm-property">"Version"</span>: <span class="cm-string">"2008-10-17"</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-string cm-property">"Statement"</span>: [</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;  {</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-string cm-property">"Effect"</span>: <span class="cm-string">"Allow"</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-string cm-property">"Principal"</span>: <span class="cm-string">"*"</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-string cm-property">"Action"</span>: <span class="cm-string">"s3:GetObject"</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-string cm-property">"Resource"</span>: [</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-string">"arn:aws:s3:::rh-2020-02-25-s3site/*"</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-string">"arn:aws:s3:::rh-2020-02-25-s3site"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  ],</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-string cm-property">"Condition"</span>: {</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-string cm-property">"IpAddress"</span>: {</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-string cm-property">"aws:SourceIp"</span>: [</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-string">"23.23.23.23/32"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  ]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  }</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  }</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;  },</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;  {</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-string cm-property">"Sid"</span>: <span class="cm-string">"DenyOneObjectIfRequestNotSigned"</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-string cm-property">"Effect"</span>: <span class="cm-string">"Deny"</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-string cm-property">"Principal"</span>: <span class="cm-string">"*"</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-string cm-property">"Action"</span>: <span class="cm-string">"s3:GetObject"</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-string cm-property">"Resource"</span>: <span class="cm-string">"arn:aws:s3:::rh-2020-02-25-s3site/report.html"</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-string cm-property">"Condition"</span>: {</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-string cm-property">"StringNotEquals"</span>: {</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-string cm-property">"s3:authtype"</span>: <span class="cm-string">"REST-QUERY-STRING"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  }</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  }</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;  }</span></pre><div class="" style="position: relative;"><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  ]</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">}</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 759px;"></div><div class="CodeMirror-gutters" style="display: none; height: 759px;"></div></div></div></pre><p><strong><span>Save</span></strong><span> that file.</span></p></li><li><p><span>You now need to tell your S3 bucket to apply this new bucket policy. You will need to use the </span><code>permissions</code><span> file in your respective language folder to do this.</span></p><p>🔬<span> You will find a file or folder called </span><code>permissions</code><span> inside your respective code folder.</span></p><p><span>Navigate into your respective code folder using the </span><code>CMD_LINE</code></p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="bash"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">cd</span> &lt;FMI&gt;</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">#e.g cd node_10.8.1</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 46px;"></div><div class="CodeMirror-gutters" style="display: none; height: 46px;"></div></div></div></pre><p>⚠️<span> </span><strong><span>If you are using Java</span></strong><span> the folder structure for java is different from for Node.js or Python. You'll need to navigate to the parent folder for the program to run. The parent folder name will correspond with the file name for the other languages. In this case, the file is named </span><code>permissions</code><span> for node and python, therefore the folder you should navigate to in the java folder is the </span><code>permissions</code><span> folder. Under that folder you should see a </span><code>pom.xml</code><span> file - that is how you know you are in the right spot :).</span></p></li><li><p><span>Open the </span><code>permissions</code><span> file in Cloud9 by double clicking it</span></p><p>⚠️<span> </span><strong><span>If you are using Java</span></strong><span> open the </span><code>App.java</code><span> file under </span><code>src/main/java/com/mycompany/app/</code><span> </span></p></li><li><p><span>Now edit the file by replacing the </span><code>&lt;FMI&gt;</code><span>s with the name of your bucket that used before. Example: </span><code>rh-2020-02-25-s3site</code><span>.</span></p><p><span>Once you have edited the </span><code>permissions</code><span> file. </span><strong><span>Save</span></strong><span> it, and run it as per the table below:</span></p><p>💁‍♂<span> </span><em><span>You should already be in the right folder in the </span><code>CMD_LINE</code><span>. If not, navigate to the correct folder</span></em><span>.</span></p><p><span>The following table shows the respective </span><strong><span>run command</span></strong><span> needed to run your recently edited </span><code>permissions</code><span> file:</span></p><figure><table><thead><tr><th><span>Language</span></th><th><span>Filename You Need To Edit</span></th><th><span>Command to run via </span><code>CMD_LINE</code></th></tr></thead><tbody><tr><td><span>Node.js (v10)</span></td><td><span>permissions.js</span></td><td><code>npm install aws-sdk &amp;&amp; node permissions.js</code></td></tr><tr><td><span>Python (v3)</span></td><td><span>permissions.py</span></td><td><code>sudo pip3 install boto3 &amp;&amp; sudo pip3 install --upgrade awscli &amp;&amp; python3 permissions.py</code></td></tr><tr><td><span>Java</span></td><td><span>App.java</span></td><td><code>mvn clean install</code><span>, then run </span><code>mvn exec:java -Dexec.mainClass=com.mycompany.app.App</code></td></tr></tbody></table></figure><p><span>Once you run the file in the </span><code>CMD_LINE</code><span> you should see (regardless of language) the word </span><strong><span>done</span></strong><span>.</span></p></li></ol><h3><a name="stage-3---upload-the-website" class="md-header-anchor"></a><span>Stage 3 - Upload The Website</span></h3><p><span>Now we have all the permissions set for our website, we need to upload the website to the bucket.</span></p><p>💁‍♂<span> </span><em><span>The good news is that you don't need to create a website. A basic one has been created for you and is sitting in your Cloud9 resources folder. You just need to upload it.</span></em></p><p><span>You are going to use a script that leveraged the respective SDK to upload this website content to your bucket. </span></p><ol start=""><li><p><span>There is a file or folder called </span><code>upload_items</code><span>. This is the file or folder where you will edit the code.</span></p><p><span>In this file replace the </span><code>&lt;FMI&gt;</code><span> entry with your bucket name that you created earlier </span><em><span>(not the website URL, the bucket name)</span></em><span>.  </span><strong><span>Save</span></strong><span> the file. Then run it.</span></p><p><span>The following table shows the respective </span><strong><span>run command</span></strong><span> needed to run your </span><code>permissions</code><span> file:</span></p><p>💁‍♂<span> </span><em><span>Be in the right folder when you run that file.</span></em><span> </span><em><span>e.g ( cd resources/node_10.8.1)</span></em></p><figure><table><thead><tr><th><span>Language</span></th><th><span>Filename You Need To Edit</span></th><th><span>Command to run via </span><code>CMD_LINE</code></th></tr></thead><tbody><tr><td><span>Node.js (v10)</span></td><td><span>upload_items.js</span></td><td><code>node upload_items.js</code></td></tr><tr><td><span>Python (v3)</span></td><td><span>upload_items.py</span></td><td><code>python3 upload_items.py</code></td></tr><tr><td><span>Java</span></td><td><span>App.java</span></td><td><code>mvn clean install</code><span>, then run </span><code>mvn exec:java -Dexec.mainClass=com.mycompany.app.App</code></td></tr></tbody></table></figure><p><span>Once you run the file in the </span><code>CMD_LINE</code><span> you should see (regardless of language) the word </span><strong><span>done</span></strong><span>.</span></p></li><li><p><span>It's time to </span><u><span>test the site</span></u><span> and make sure it works via a virtual secure endpoint. You made a note of your bucket name.</span></p><p><span>You can construct the URL in the following way: Where </span><code>&lt;FMI&gt;</code><span> is your bucket name.</span></p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="json"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="json"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">https</span>:<span class="cm-comment">//&lt;FMI&gt;.s3-us-west-2.amazonaws.com/index.html</span></span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 23px;"></div><div class="CodeMirror-gutters" style="display: none; height: 23px;"></div></div></div></pre><p><span>For example.</span></p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="bash"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">https://rh-2020-02-25-s3site.s3-us-west-2.amazonaws.com/index.html</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 23px;"></div><div class="CodeMirror-gutters" style="display: none; height: 23px;"></div></div></div></pre></li><li><p><span>Visit that URL in you web browser to test it. Verify your website is now showing up.</span></p><p><span>Try accessing that URL out side of your network. </span>💁‍♂<span> </span><em><span>You could test by using your cellphone off your WIFI to get a different IPv4.</span></em></p><p><span>You should only be able to access this website </span><strong><span>IF</span></strong><span> you are at that IPv4. Pretend that you are at the camera store and you are at a Kiosk.</span></p><p>💁<span> </span><em><span>Keep in mind this will not work from testing within the Cloud9 environment.  Only from the Source IP that was allowed.</span></em></p><p><span>The JavaScript code in this website essentially allows for interaction with an API (that does not yet exist). When you create the API </span><em><span>in the next lab</span></em><span>. You will have to edit the </span><code>config.js</code><span> file and then re-upload it using a similar </span><code>upload_items</code><span> script.</span></p><p><span>That is why if you choose an item from the dropdown and press either the </span><code>get reviews</code><span>, </span><code>get rating</code><span> or </span><code>request report</code><span> buttons. You will get a message saying you have no API to call.</span></p><p><strong><span>This is expected behavior right now.</span></strong></p></li></ol><h3><a name="stage-4-optional---look-at-the-website-code" class="md-header-anchor"></a><span>Stage 4 [optional] - Look At The Website Code</span></h3><p><span>I recommend looking at the JS code in the </span><code>main.js</code><span> file. You don't need to be a JavaScripter or follow everything that is going on in that file, but I think a glance will help you put everything into context as you progress through the other 5 labs. </span></p><p>📓<span> </span><em><span>You can see it checks for presence of an API which we don't have yet.</span></em></p><hr><p><strong><span>Perfect!</span></strong><span> </span></p><p><span>You have a website up and working on all their kiosks.</span></p><p><span>Mike is happy that things seem to be moving forward quickly, and you look forward to tomorrow's task. (Lab2) where you will start wiring up the plumbing of the site, in terms of building it's back-end mock API.</span></p><h3><a name="lab-complete" class="md-header-anchor"></a><span>Lab Complete</span></h3><p><span>	</span><span> Congratulations! You have completed the lab.</span></p><ol start=""><li><span>Click </span><strong><span>End Lab</span></strong><span> at the top of this page and then click </span><strong><span>Yes</span></strong><span> to confirm that you want to end the lab.</span></li><li><span>A panel will appear, indicating that "DELETE has been initiated... You may close this message box now."</span></li><li><span>Click the </span><strong><span>X</span></strong><span> in the top right corner to close the panel.</span></li></ol><p><span>	</span><span>For feedback, suggestions, or corrections, please contact us at:</span><a href="https://support.aws.amazon.com/#/contacts/aws-training" target="_blank" class="url">https://support.aws.amazon.com/#/contacts/aws-training</a></p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p></div>
+<script defer="" src="./beacon.min.js" data-cf-beacon="{&quot;rayId&quot;:&quot;69640d726b3ec4ec&quot;,&quot;token&quot;:&quot;a73834a4a1444e9ab89e8da06da41720&quot;,&quot;version&quot;:&quot;2021.8.1&quot;,&quot;si&quot;:10}"></script>
+
+</body></html>
